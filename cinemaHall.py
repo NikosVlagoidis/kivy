@@ -5,10 +5,17 @@ class CinemaHall(Hall):
     threeD = False
     soundSystem = ""
 
-    def add_threed(self):
+    def set_threed(self):
+        """
+        Set a Cinema Hall to have 3d Screen
+        """
         self.threeD = True
 
-    def add_sound_system(self, ss):
+    def set_sound_system(self, ss):
+        """
+        Set a Specific SoundSystem to the Cinema Hall
+        :param ss:
+        """
         self.soundSystem = ss.upper()
 
 
