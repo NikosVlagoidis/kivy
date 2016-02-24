@@ -19,3 +19,9 @@ class Hall:
         for line in self.lines:
             current_cap += len(line)
         return current_cap
+
+    def create_line_of_seats(self, num_of_seats):
+        line = []
+        for i in range(1,num_of_seats):
+            line.append(i)
+        return line
