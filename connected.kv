@@ -1,0 +1,48 @@
+<Connected>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 100
+
+        Label:
+            text: "You are now connected as Admin "
+            font_size: 32
+            text_size: self.size
+            halign:'center'
+            valign: 'top'
+        BoxLayout:
+            orientation: 'vertical'
+            padding: 20
+            spacing: 10
+            Button:
+                text: "Disconnect"
+                font_size: 24
+                text_size: self.size
+                halign:'center'
+                valign: 'middle'
+                on_press: root.disconnect()
+            Button:
+                text: "Add a Play"
+                font_size: 24
+                text_size: self.size
+                halign:'center'
+                valign: 'middle'
+                on_press: root.add_a_play()
+            Button:
+                text: "Delete a Play"
+                font_size: 24
+                text_size: self.size
+                halign:'center'
+                valign: 'middle'
+            Button:
+                text: "Add a Hall"
+                font_size: 24
+                text_size: self.size
+                halign:'center'
+                valign: 'middle'
+            Button:
+                text: "Delete a Hall"
+                font_size: 24
+                text_size: self.size
+                halign:'center'
+                valign: 'middle'

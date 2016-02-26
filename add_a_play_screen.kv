@@ -1,0 +1,44 @@
+
+<AddAPlay>:
+    BoxLayout
+        id: add_a_play_layout
+        orientation: 'vertical'
+        padding: [10,50,10,50]
+        spacing: 50
+
+        Label:
+            text: 'Add a play'
+            font_size: 32
+
+        BoxLayout:
+            orientation: 'vertical'
+
+            Label:
+                text: 'Name of the play'
+                font_size: 18
+                halign: 'left'
+                text_size: root.width-20, 20
+
+            TextInput:
+                id: nameOfPlay
+                multiline:False
+                font_size: 28
+
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: 'Short Description'
+                halign: 'left'
+                font_size: 18
+                text_size: root.width-20, 20
+
+            TextInput:
+                id: shortDescription
+                multiline:True
+                font_size: 28
+
+        Button:
+            text: 'Connect'
+            font_size: 24
+
+            on_press: root.do_add(nameOfPlay.text,shortDescription.text)
