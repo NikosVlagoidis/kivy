@@ -1,14 +1,24 @@
 from hall import Hall
 from theaterHall import TheaterHall
 from cinemaHall import CinemaHall
+from week_schedule import Week_Schedule
+from play import Play
 
-hall = Hall("paok", 300)
-hall.add_line_of_seats([1, 2, 3])
-hall.add_line_of_seats([1, 2, 3])
-for i in range(1,2):
-    hall.add_line_of_seats([1, 3, 4, 5])
+hall = Hall("Hall 1", 300)
+hall2 = Hall("Hall 2", 500)
 
-hall.add_line_of_seats(hall.create_line_of_seats(10))
+jamesbond = Play()
+jamesbond.set_name("James Bond")
+schedule = Week_Schedule()
+lotr = Play()
+lotr.set_name("Lord of the Rings")
 
-print(hall.get_number_of_seats())
+schedule.set_play_date(jamesbond, "Monday", hall, ["12,30", "14,40", "16.30"])
+schedule.set_play_date(jamesbond, "Monday", hall2, "17.00")
+schedule.set_play_date(jamesbond, "Tuesday", hall2, "17.00")
+schedule.set_play_date(lotr, "Sunday", hall2, "13.00")
 
+
+
+schedule.find_day_for_play(lotr.name)
+schedule.find_day_for_play(jamesbond.name)
