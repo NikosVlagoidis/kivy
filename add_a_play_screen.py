@@ -1,7 +1,9 @@
 from kivy.app import App
 from kivy.uix.screenmanager import Screen, SlideTransition
-from play import   Play
+from play import Play
 from play import movies
+
+#add check for empty entries
 
 class AddAPlay(Screen):
     def disconnect(self):
