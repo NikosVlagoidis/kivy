@@ -12,3 +12,4 @@ class Connected(Screen):
         self.manager.transition = SlideTransition(direction="left")
         self.manager.current = 'add_a_play_screen'
         self.manager.get_screen('add_a_play_screen').reset_form()
+

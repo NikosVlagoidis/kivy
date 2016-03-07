@@ -12,7 +12,6 @@ from add_a_play_screen import AddAPlay
 from play import movies
 
 
-
 class Login(Screen):
     def do_login(self, login_text, password_text):
         app = App.get_running_app()
@@ -60,11 +59,12 @@ schedule.set_play_date(jamesbond, "Tuesday", hall2, "17.00")
 schedule.set_play_date(lotr, "Sunday", hall2, "13.00")
 
 
-
 schedule.find_day_for_play(lotr.name)
 schedule.find_day_for_play(jamesbond.name)
+
 
 
 for movie in movies:
     print(movie.name)
     print(movie.description)
+    print(movie.actor_list)

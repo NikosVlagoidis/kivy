@@ -4,19 +4,18 @@
         id: add_a_play_layout
         orientation: 'vertical'
         padding: [10,50,10,50]
-        spacing: 50
+        spacing: 5
 
         Label:
             text: 'Add a play'
             font_size: 32
 
         BoxLayout:
-            orientation: 'vertical'
-
+            orientation: 'horizontal'
             Label:
                 text: 'Name of the play'
                 font_size: 18
-                halign: 'left'
+                halign: 'center'
                 text_size: root.width-20, 20
 
             TextInput:
@@ -25,20 +24,60 @@
                 font_size: 28
 
         BoxLayout:
-            orientation: 'vertical'
+            orientation: 'horizontal'
             Label:
                 text: 'Short Description'
-                halign: 'left'
+                halign: 'center'
                 font_size: 18
                 text_size: root.width-20, 20
 
             TextInput:
                 id: shortDescription
                 multiline:True
-                font_size: 28
+                font_size: 15
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                text: 'Director'
+                halign: 'center'
+                font_size: 18
+                text_size: root.width-20, 20
 
+            TextInput:
+                id: Director
+                multiline:True
+                font_size: 28
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                text: 'List Of Actors'
+                halign: 'center'
+                font_size: 18
+                text_size: root.width-20, 20
+
+            TextInput:
+                id: List_of_Actors
+                multiline:True
+                font_size: 15
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                text: 'Duration'
+                halign: 'center'
+                font_size: 18
+                text_size: root.width-20, 20
+            TextInput:
+                id: duration
+                multiline:False
+                font_size: 18
         Button:
             text: 'Save Play'
             font_size: 24
 
-            on_press: root.do_add(nameOfPlay.text,shortDescription.text)
+            on_press: root.do_add(nameOfPlay.text,shortDescription.text,Director.text,List_of_Actors.text)
+
+        Button:
+            text: 'Go Back'
+            font_size: 24
+
+            on_press: root.do_go_back()
