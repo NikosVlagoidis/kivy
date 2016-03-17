@@ -6,7 +6,9 @@ from play import Play
 from kivy.app import App
 from kivy.properties import StringProperty
 from kivy.uix.screenmanager import ScreenManager, Screen, SlideTransition
-import os
+from kivy.uix.button import Button
+from kivy.uix.label import Label
+from kivy.uix.boxlayout import BoxLayout
 from play import movies
 
 
@@ -15,9 +17,9 @@ class Login(Screen):
         app = App.get_running_app()
         app.username = login_text
         app.password = password_text
-        #if app.username.upper() =="ADMIN" and app.password.upper() =="ADMIN":
-        self.manager.transition = SlideTransition(direction="left")
-        self.manager.current = 'connected'
+        if app.username.upper() == "ADMIN" and app.password.upper() == "ADMIN":
+            self.manager.transition = SlideTransition(direction="left")
+            self.manager.current = 'connected'
 
     def reset_form(self):
         self.ids['login'].text = ""
@@ -36,8 +38,9 @@ class Connected(Screen):
         self.manager.get_screen('add_a_play_screen').reset_form()
 
     def delete_a_play(self):
-        self.manager.transition = SlideTransition(directtion  = "left")
+        self.manager.transition = SlideTransition(directtion="left")
         self.manager.current = 'delete_a_play_screen'
+        self.manager.get_screen('delete_a_play_screen').show_list()
 
 
 class AddAPlay(Screen):
@@ -45,7 +48,7 @@ class AddAPlay(Screen):
         self.manager.transition = SlideTransition(direction="right")
         self.manager.current = 'connected'
 
-    def do_add(self, name_of_play, short_description, director,list_of_actors):
+    def do_add(self, name_of_play, short_description, director, list_of_actors):
         app = App.get_running_app()
         app.nameOfPlay = name_of_play
         app.shortDescription = short_description
@@ -59,11 +62,13 @@ class AddAPlay(Screen):
         self.manager.transition = SlideTransition(direction="left")
         self.manager.current = 'connected'
         movies.append(new_play)
-        print(new_play.name, new_play.director, new_play.description)
 
     def reset_form(self):
         self.ids['nameOfPlay'].text = ""
         self.ids['shortDescription'].text = ""
+        self.ids['Director'].text = ""
+        self.ids['List_of_Actors'].text = ""
+        self.ids['duration'].text = ""
 
     def do_go_back(self,):
         self.manager.transition = SlideTransition(direction="left")
@@ -71,11 +76,28 @@ class AddAPlay(Screen):
 
 
 class DeleteAPlay(Screen):
+
     def do_go_back(self,):
         self.manager.transition = SlideTransition(direction="left")
         self.manager.current = 'connected'
 
+    def show_list(self):
+        self.ids.listes.clear_widgets()
+        for k in movies:
+            label = Label(text=k.name, id=k.name+"label")
+            button = Button(text='Delete', id=k.name)
+            box = BoxLayout(orientation='horizontal')
+            box.add_widget(label)
+            box.add_widget(button)
+            self.ids.listes.add_widget(box)
+            button.fbind('on_press', self.delete_movie)
 
+    def delete_movie(self, obj):
+
+        for k in movies:
+            if k.name == obj.id:
+                movies.remove(k)
+        self.manager.get_screen('delete_a_play_screen').show_list()
 
 
 class LoginApp(App):
@@ -113,8 +135,6 @@ schedule.set_play_date(lotr, "Sunday", hall2, "13.00")
 
 schedule.find_day_for_play(lotr.name)
 schedule.find_day_for_play(jamesbond.name)
-
-
 
 for movie in movies:
     print(movie.name)

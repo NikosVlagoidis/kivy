@@ -1,5 +1,5 @@
 <AddAPlay>:
-    BoxLayout
+    BoxLayout:
         id: add_a_play_layout
         orientation: 'vertical'
         padding: [10,50,10,50]
@@ -81,9 +81,21 @@
 
             on_press: root.do_go_back()
 
-<DeleteAPlay>:
-    Button:
-        text: 'Go Back'
-        font_size: 24
 
-        on_press: root.do_go_back()
+<DeleteAPlay>:
+    BoxLayout:
+        id: delete_a_play_layout
+        orientation: 'vertical'
+        padding: [10,50,10,50]
+        spacing: 5
+        Button:
+            text: 'Go Back'
+            font_size: 24
+            on_press: root.do_go_back()
+        Label:
+            text: 'Press Delete to Delete a movie'
+        BoxLayout:
+            id: listes
+            orientation: 'vertical'
+            padding: [10,50,10,50]
+            spacing: 5
