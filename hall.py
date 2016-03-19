@@ -1,3 +1,6 @@
+halls = []
+
+
 class Hall:
     def __init__(self, name, capacity):
         """

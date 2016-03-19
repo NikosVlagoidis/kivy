@@ -99,3 +99,49 @@
             orientation: 'vertical'
             padding: [10,50,10,50]
             spacing: 5
+
+<AddAHall>:
+    BoxLayout:
+        id: add_a_hall_layout
+        orientation: 'vertical'
+        padding: [10,50,10,50]
+        spacing: 5
+        Label:
+            text: 'Add a hall'
+            font_size: 32
+
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                text: 'Name of the Hall'
+                font_size: 18
+                halign: 'center'
+                text_size: root.width-20, 20
+
+            TextInput:
+                id: nameOfHall
+                multiline:False
+                font_size: 28
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                text: 'Capacity'
+                halign: 'center'
+                font_size: 18
+                text_size: root.width-20, 20
+
+            TextInput:
+                id: capacity
+                multiline:True
+                font_size: 15
+        Button:
+            text: 'Save Hall'
+            font_size: 24
+
+            on_press: root.do_add(nameOfHall.text,capacity.text)
+
+        Button:
+            text: 'Go Back'
+            font_size: 24
+
+            on_press: root.do_go_back()
